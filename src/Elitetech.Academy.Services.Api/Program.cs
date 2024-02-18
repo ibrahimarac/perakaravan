@@ -6,6 +6,11 @@ using Perakaravan.Services.Api.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
+    .AddEnvironmentVariables();
+
 #region Register Services
 
 //Register Controllers
@@ -40,12 +45,9 @@ using (var scope = app.Services.CreateScope())
 
 #region Register Middlawares
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+    
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
