@@ -27,14 +27,14 @@ namespace Perakaravan.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<Result<LoginResponseDto>> Login(LoginRequestDto loginUserRequest)
+        public async Task<Result> Login(LoginRequestDto loginUserRequest)
         {
             var loginUser = await _unitOfWork.LoginUserRepository.FirstOrDefaultAsync(x => x.Username == loginUserRequest.Username &&
                 x.Password == loginUserRequest.Password);
 
             if (loginUser is null)
             {
-                return Result<LoginResponseDto>.NotFound();
+                return Result.NotFound();
             }
 
             #region Token üretiliyor
@@ -65,7 +65,7 @@ namespace Perakaravan.Application.Services
 
             #endregion
 
-            return Result<LoginResponseDto>.Success(new LoginResponseDto
+            return Result.Success(new LoginResponseDto
             {
                 LoginUser = _mapper.Map<LoginUserDto>(loginUser),
                 Token = token,
@@ -77,7 +77,7 @@ namespace Perakaravan.Application.Services
         }
 
 
-        public async Task<Result<LoginResponseDto>> CreateRefreshTokenAsync(RefreshTokenRequestDto refreshTokenRequest)
+        public async Task<Result> CreateRefreshTokenAsync(RefreshTokenRequestDto refreshTokenRequest)
         {
 
             var tokenExpireDate = DateTime.UtcNow.AddMinutes(int.Parse(_configuration["Jwt:TokenExpireMinutes"] ?? ""));
@@ -89,14 +89,14 @@ namespace Perakaravan.Application.Services
             var getUserIdResult = int.TryParse(principle.FindFirst("Id")?.Value, out userId);
             if (!getUserIdResult)
             {
-                return Result<LoginResponseDto>.Error("Access token geçerli değil.");
+                return Result.Error("Access token geçerli değil.");
             }
 
             var existsUser = await _unitOfWork.LoginUserRepository.GetByIdAsync(userId);
 
             if (existsUser is null || existsUser.RefreshToken != refreshTokenRequest.RefreshToken || existsUser.RefreshTokenExpire <= DateTime.UtcNow.ToTurkeyLocalTime())
             {
-                return Result<LoginResponseDto>.Error("Access token veya refresh token geçerli değil.");
+                return Result.Error("Access token veya refresh token geçerli değil.");
             }
 
             //Tokenlar üretiliyor
@@ -109,7 +109,7 @@ namespace Perakaravan.Application.Services
             _unitOfWork.LoginUserRepository.Update(existsUser);
             await _unitOfWork.CommitAsync();
 
-            return Result<LoginResponseDto>.Success(new LoginResponseDto
+            return Result.Success(new LoginResponseDto
             {
                 LoginUser = _mapper.Map<LoginUserDto>(existsUser),
                 Token = accessToken,

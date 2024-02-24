@@ -6,7 +6,7 @@ namespace Perakaravan.Services.Api.Controllers
     [ApiController]
     public class ApiController : ControllerBase
     {
-        protected ActionResult CustomResponse<T>(Result<T> result)
+        protected ActionResult CustomResponse(Result result)
         {
 
             if (result.Status == ResultStatus.Ok)

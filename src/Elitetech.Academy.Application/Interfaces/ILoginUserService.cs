@@ -6,7 +6,7 @@ namespace Perakaravan.Application.Interfaces
 {
     public interface ILoginUserService
     {
-        Task<Result<LoginResponseDto>> Login(LoginRequestDto loginUserRequest);
-        Task<Result<LoginResponseDto>> CreateRefreshTokenAsync(RefreshTokenRequestDto refreshTokenRequest);
+        Task<Result> Login(LoginRequestDto loginUserRequest);
+        Task<Result> CreateRefreshTokenAsync(RefreshTokenRequestDto refreshTokenRequest);
     }
 }

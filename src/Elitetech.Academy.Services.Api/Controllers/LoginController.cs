@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Perakaravan.Application.Dtos.Request;
-using Perakaravan.Application.Dtos.Response;
 using Perakaravan.Application.Interfaces;
 
 namespace Perakaravan.Services.Api.Controllers

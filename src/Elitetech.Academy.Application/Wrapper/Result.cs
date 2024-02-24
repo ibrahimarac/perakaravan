@@ -1,15 +1,15 @@
 ﻿namespace Perakaravan.Application.Wrapper
 {
-    public class Result<T>
+    public class Result
     {
-        public T Data { get; }
-        public ResultStatus Status { get; private set; }
-        public bool IsSuccess => Status == ResultStatus.Ok;
+        public dynamic Data { get; set; }
+        public ResultStatus Status { get; set; }
+        public bool IsSuccess => Status == ResultStatus.Ok && !Errors.Any();
         public string SuccessMessage { get; private set; } = string.Empty;
-        public IEnumerable<string> Errors { get; private set; } = new List<string>();
+        public IEnumerable<string> Errors { get; set; } = Enumerable.Empty<string>();
 
 
-        public Result(T data)
+        private Result(dynamic data)
         {
             Data = data;
         }
@@ -19,31 +19,39 @@
             Status = status;
         }
 
-
-        public static Result<T> Success(T value)
+        public static Result Success<T>(T data)
         {
-            return new Result<T>(value);
+            return new Result(data);
         }
 
-        public static Result<T> Success(T value, string successMessage)
+        public static Result Success<T>(T data, string successMessage)
         {
-            return new Result<T>(value)
+            return new Result(data)
             {
                 SuccessMessage = successMessage
             };
         }
 
-        public static Result<T> Error(params string[] errorMessages)
+        public static Result Error(params string[] errorMessages)
         {
-            return new Result<T>(ResultStatus.Error)
+            return new Result(ResultStatus.Error)
             {
                 Errors = errorMessages
             };
         }
 
-        public static Result<T> NotFound()
+        public static Result NotFound()
         {
-            return new Result<T>(ResultStatus.NotFound);
+            return new Result(ResultStatus.NotFound);
         }
+
+        public static Result NotFound(params string[] errorMessages)
+        {
+            return new Result(ResultStatus.NotFound)
+            {
+                Errors = errorMessages
+            };
+        }
+
     }
 }
