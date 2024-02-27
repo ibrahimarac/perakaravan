@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'Pera'
+  vmImage: 'AzureAgentPool'
 
 variables:
   solution: '**/*.sln'
