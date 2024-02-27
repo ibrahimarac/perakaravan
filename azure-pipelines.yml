@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'AzureAgentPool'
+  name: 'AzureAgentPool'
 
 variables:
   solution: '**/*.sln'
