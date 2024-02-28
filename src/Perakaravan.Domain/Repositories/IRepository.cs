@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace Perakaravan.Application.Repositories
+namespace Perakaravan.Domain.Repositories
 {
     public interface IRepository<TEntity> : IDisposable where TEntity : class
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Perakaravan.Application.Repositories;
 using Perakaravan.Data.Context;
+using Perakaravan.Domain.Repositories;
 using System.Linq.Expressions;
 
 namespace Perakaravan.Data.Repositories

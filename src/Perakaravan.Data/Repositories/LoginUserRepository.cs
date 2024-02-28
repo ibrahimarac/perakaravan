@@ -1,6 +1,6 @@
-﻿using Perakaravan.Application.Repositories;
-using Perakaravan.Data.Context;
+﻿using Perakaravan.Data.Context;
 using Perakaravan.Domain.Entities;
+using Perakaravan.Domain.Repositories;
 
 namespace Perakaravan.Data.Repositories
 {

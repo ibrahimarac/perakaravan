@@ -17,7 +17,7 @@ builder.Configuration
 builder.Services.AddControllers();
 
 //Register other layers services
-NativeInjectorBootStrapper.RegisterServices(builder.Services);
+NativeInjectorBootStrapper.RegisterServices(builder.Services, builder.Configuration);
 
 //Register Db
 builder.Services.AddDatabaseConfiguration(builder.Configuration);

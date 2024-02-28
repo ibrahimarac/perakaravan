@@ -22,13 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Elitetech.Academy.Application\Perakaravan.Application.csproj" />
-    <ProjectReference Include="..\Elitetech.Academy.Domain\Perakaravan.Domain.csproj" />
-    <ProjectReference Include="..\Elitetech.Academy.InfraPack\Perakaravan.InfraPack.csproj" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <ProjectReference Include="..\Perakaravan.Domain\Perakaravan.Domain.csproj" />
   </ItemGroup>
 
 </Project>

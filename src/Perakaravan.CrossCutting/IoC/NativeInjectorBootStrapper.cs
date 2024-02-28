@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Perakaravan.Application.Constants;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Perakaravan.Application.Interfaces;
-using Perakaravan.Application.Repositories;
 using Perakaravan.Application.Services;
 using Perakaravan.Data.Repositories;
+using Perakaravan.Domain.Repositories;
 using Perakaravan.InfraPack.Providers.EncryptionProvider.Implementations;
 using Perakaravan.InfraPack.Providers.EncryptionProvider.Interfaces;
 
@@ -11,7 +11,7 @@ namespace Perakaravan.CrossCutting.IoC
 {
     public static class NativeInjectorBootStrapper
     {
-        public static void RegisterServices(IServiceCollection services)
+        public static void RegisterServices(IServiceCollection services, IConfiguration configuration)
         {
             //Application
             services.AddScoped<ILoginUserService, LoginUserService>();
@@ -19,7 +19,7 @@ namespace Perakaravan.CrossCutting.IoC
             //InfraPack
             services.AddSingleton<IEncryptionProvider, EncryptionProvider>(provider =>
             {
-                return new EncryptionProvider(ApplicationConstants.EncryptionKey);
+                return new EncryptionProvider(configuration["Application:EncryptionKey"] ?? "");
             });
 
             //Data

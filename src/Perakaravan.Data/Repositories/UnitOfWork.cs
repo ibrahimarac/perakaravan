@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using Perakaravan.Application.Repositories;
 using Perakaravan.Data.Context;
 using Perakaravan.Domain.Common;
+using Perakaravan.Domain.Repositories;
 using Perakaravan.InfraPack.Extensions;
 
 namespace Perakaravan.Data.Repositories

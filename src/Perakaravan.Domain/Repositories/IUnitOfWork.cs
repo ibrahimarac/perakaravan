@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
 
-namespace Perakaravan.Application.Repositories
+namespace Perakaravan.Domain.Repositories
 {
     public interface IUnitOfWork : IDisposable
     {

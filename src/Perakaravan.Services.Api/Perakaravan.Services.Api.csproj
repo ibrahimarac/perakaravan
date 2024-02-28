@@ -29,8 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Elitetech.Academy.CrossCutting\Perakaravan.CrossCutting.csproj" />
-    <ProjectReference Include="..\Elitetech.Academy.Data\Perakaravan.Data.csproj" />
+    <ProjectReference Include="..\Perakaravan.Application\Perakaravan.Application.csproj" />
+    <ProjectReference Include="..\Perakaravan.CrossCutting\Perakaravan.CrossCutting.csproj" />
+    <ProjectReference Include="..\Perakaravan.Data\Perakaravan.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 ﻿using Perakaravan.Domain.Entities;
 
-namespace Perakaravan.Application.Repositories
+namespace Perakaravan.Domain.Repositories
 {
     public interface ILoginUserRepository : IRepository<LoginUser>
     {
