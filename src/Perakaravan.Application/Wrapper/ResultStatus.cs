@@ -2,8 +2,8 @@
 {
     public enum ResultStatus
     {
-        Ok,
-        Error, //Hata var
-        NotFound //Kayıt nulunamadı
+        Ok = 1,
+        Error = 2, //Hata var
+        NotFound = 3//Kayıt bulunamadı
     }
 }

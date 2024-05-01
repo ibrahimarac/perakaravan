@@ -1,4 +1,4 @@
-﻿namespace Perakaravan.Application.Dtos.Request
+﻿namespace Perakaravan.Application.Dtos.Request.Logins
 {
     public class RefreshTokenRequestDto
     {

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Perakaravan.Application.Dtos.Request;
-using Perakaravan.Application.Dtos.Response;
+using Perakaravan.Application.Dtos.Request.Logins;
+using Perakaravan.Application.Dtos.Response.Logins;
 using Perakaravan.Application.Interfaces;
 using Perakaravan.Application.Wrapper;
 using Perakaravan.Domain.Repositories;
@@ -43,8 +43,11 @@ namespace Perakaravan.Application.Services
 
             var claims = new[]
             {
-                new Claim("UserId", loginUser.Id.ToString()),
-                new Claim("Username", loginUser.Username)
+                new Claim("Id", loginUser.Id.ToString()),
+                new Claim("Name", loginUser.Name),
+                new Claim("Surname", loginUser.Surname),
+                new Claim("Username", loginUser.Username),
+                new Claim("Email", loginUser.Email)
             };
 
             var token = GenerateToken(tokenExpireDate, claims.ToList());

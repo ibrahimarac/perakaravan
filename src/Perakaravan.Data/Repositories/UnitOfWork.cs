@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Perakaravan.Data.Context;
 using Perakaravan.Domain.Common;
 using Perakaravan.Domain.Repositories;
+using Perakaravan.InfraPack.Domain;
 using Perakaravan.InfraPack.Extensions;
 
 namespace Perakaravan.Data.Repositories
@@ -12,13 +13,15 @@ namespace Perakaravan.Data.Repositories
         private readonly PeraContext _context;
         private bool _disposed = false;
 
+        private readonly LoggedUser _loggedUser;
         private readonly ILoginUserRepository loginUserRepository;
 
-        public UnitOfWork(PeraContext context)
+        public UnitOfWork(PeraContext context, LoggedUser loggedUser)
         {
             _context = context;
 
             loginUserRepository = loginUserRepository ?? new LoginUserRepository(_context);
+            _loggedUser = loggedUser;
         }
 
 
@@ -39,23 +42,19 @@ namespace Perakaravan.Data.Repositories
                 if (entry.State == EntityState.Added && entry.Entity is Entity addedEntity)
                 {
                     addedEntity.CreatedTime = DateTime.UtcNow.ToTurkeyLocalTime();
-                    addedEntity.UpdatedUser = "admin";
+                    addedEntity.UpdatedUser = _loggedUser.Username ?? "admin";
                 }
                 else if (entry.State == EntityState.Deleted && entry.Entity is Entity deletedEntity)
                 {
                     entry.State = EntityState.Modified;
-                    deletedEntity.UpdatedUser = "admin";
+                    deletedEntity.UpdatedUser = _loggedUser.Username ?? "admin";
                     deletedEntity.UpdatedTime = DateTime.UtcNow.ToTurkeyLocalTime();
                     deletedEntity.IsDeleted = true;
                 }
-                else if (entry.State == EntityState.Deleted && entry.Entity is Entity modifiedEntity)
+                else if (entry.State == EntityState.Modified && entry.Entity is Entity modifiedEntity)
                 {
-                    modifiedEntity.UpdatedUser = "admin";
+                    modifiedEntity.UpdatedUser = _loggedUser.Username ?? "admin";
                     modifiedEntity.UpdatedTime = DateTime.UtcNow.ToTurkeyLocalTime();
-                }
-                else
-                {
-                    break;
                 }
             }
             return await _context.SaveChangesAsync() > 0;

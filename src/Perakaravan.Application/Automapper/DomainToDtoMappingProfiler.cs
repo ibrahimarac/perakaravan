@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Perakaravan.Application.Dtos.Response;
+using Perakaravan.Application.Dtos.Response.Logins;
 using Perakaravan.Domain.Entities;
 
 namespace Perakaravan.Application.Automapper

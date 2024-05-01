@@ -4,6 +4,7 @@ using Perakaravan.Application.Interfaces;
 using Perakaravan.Application.Services;
 using Perakaravan.Data.Repositories;
 using Perakaravan.Domain.Repositories;
+using Perakaravan.InfraPack.Domain;
 using Perakaravan.InfraPack.Providers.EncryptionProvider.Implementations;
 using Perakaravan.InfraPack.Providers.EncryptionProvider.Interfaces;
 
@@ -21,6 +22,7 @@ namespace Perakaravan.CrossCutting.IoC
             {
                 return new EncryptionProvider(configuration["Application:EncryptionKey"] ?? "");
             });
+            services.AddScoped(typeof(LoggedUser));
 
             //Data
             services.AddScoped<IUnitOfWork, UnitOfWork>();

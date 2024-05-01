@@ -4,13 +4,13 @@
     {
         public dynamic Data { get; set; }
         public ResultStatus Status { get; set; }
-        public bool IsSuccess => Status == ResultStatus.Ok && !Errors.Any();
         public string SuccessMessage { get; private set; } = string.Empty;
         public IEnumerable<string> Errors { get; set; } = Enumerable.Empty<string>();
 
 
         private Result(dynamic data)
         {
+            Status = ResultStatus.Ok;
             Data = data;
         }
 
@@ -22,6 +22,11 @@
         public static Result Success<T>(T data)
         {
             return new Result(data);
+        }
+
+        public static Result Success()
+        {
+            return new Result(ResultStatus.Ok);
         }
 
         public static Result Success<T>(T data, string successMessage)

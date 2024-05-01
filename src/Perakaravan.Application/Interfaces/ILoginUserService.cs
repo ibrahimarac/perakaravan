@@ -1,5 +1,4 @@
-﻿using Perakaravan.Application.Dtos.Request;
-using Perakaravan.Application.Dtos.Response;
+﻿using Perakaravan.Application.Dtos.Request.Logins;
 using Perakaravan.Application.Wrapper;
 
 namespace Perakaravan.Application.Interfaces

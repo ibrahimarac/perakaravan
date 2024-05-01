@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 using Perakaravan.Application.Wrapper;
 
 namespace Perakaravan.Services.Api.Controllers
@@ -22,5 +23,6 @@ namespace Perakaravan.Services.Api.Controllers
                 return BadRequest(result);
             }
         }
+
     }
 }

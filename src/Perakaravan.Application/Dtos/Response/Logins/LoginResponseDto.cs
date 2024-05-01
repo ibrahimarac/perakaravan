@@ -1,4 +1,4 @@
-﻿namespace Perakaravan.Application.Dtos.Response
+﻿namespace Perakaravan.Application.Dtos.Response.Logins
 {
     public class LoginResponseDto
     {
