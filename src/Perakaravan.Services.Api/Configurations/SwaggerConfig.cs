@@ -44,8 +44,28 @@ namespace Perakaravan.Services.Api.Configurations
         {
             if (app == null) throw new ArgumentNullException(nameof(app));
 
-            app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwagger(c =>
+            {
+#if !DEBUG
+                c.RouteTemplate = "swagger/{documentName}/swagger.json";
+                var basePath = ""; // <-- nginx ingress path of values.yaml
+                c.PreSerializeFilters.Add((swaggerDoc, httpReq) => swaggerDoc.Servers = new System.Collections.Generic.List<OpenApiServer>
+                {
+                    new OpenApiServer { Url = $"https://{httpReq.Host.Value}{basePath}" }, 
+                });
+#endif
+            });
+            app.UseSwaggerUI(c =>
+            {
+#if !DEBUG
+                c.SwaggerEndpoint("./swagger/v1/swagger.json", $"{""} {""}");
+                c.RoutePrefix = string.Empty;
+                c.DocumentTitle = "";
+                c.EnableFilter();
+                c.DefaultModelsExpandDepth(-1);
+                c.DisplayRequestDuration();
+#endif
+            });
         }
     }
 }

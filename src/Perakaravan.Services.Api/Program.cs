@@ -54,9 +54,9 @@ using (var scope = app.Services.CreateScope())
 
 #region Register Middlawares
 
-app.UseSwagger();
-    
-app.UseSwaggerUI();
+app.UseDeveloperExceptionPage();
+
+app.UseSwaggerSetup();
 
 app.UseHttpsRedirection();
 
