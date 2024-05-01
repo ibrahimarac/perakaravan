@@ -34,7 +34,7 @@ namespace Perakaravan.Application.Services
 
             if (loginUser is null)
             {
-                return Result.NotFound();
+                return Result.NotFound("Belirtilen kriterlere uygun kullanıcı bulunamadı.");
             }
 
             #region Token üretiliyor
