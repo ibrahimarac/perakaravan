@@ -110,7 +110,7 @@ namespace Perakaravan.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedTime = new DateTime(2024, 5, 5, 21, 47, 55, 166, DateTimeKind.Unspecified).AddTicks(4257),
+                            CreatedTime = new DateTime(2024, 5, 5, 22, 0, 7, 800, DateTimeKind.Unspecified).AddTicks(4792),
                             CreatedUser = "admin",
                             Email = "6i1RRb8yv2k93LY76uQYXg==",
                             IsDeleted = false,
@@ -123,7 +123,7 @@ namespace Perakaravan.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedTime = new DateTime(2024, 5, 5, 21, 47, 55, 166, DateTimeKind.Unspecified).AddTicks(4304),
+                            CreatedTime = new DateTime(2024, 5, 5, 22, 0, 7, 800, DateTimeKind.Unspecified).AddTicks(4840),
                             CreatedUser = "admin",
                             Email = "YPRqARSJPWq8wMRbcsaVck2Wnq3lgHLvl0z7T+wsoKc=",
                             IsDeleted = false,
@@ -225,7 +225,7 @@ namespace Perakaravan.Data.Migrations
                         .HasColumnName("SmtpDisplayName")
                         .HasColumnOrder(14);
 
-                    b.Property<int>("SmtpPort")
+                    b.Property<int?>("SmtpPort")
                         .HasColumnType("int")
                         .HasColumnName("SmtpPort")
                         .HasColumnOrder(15);

@@ -63,7 +63,7 @@ namespace Perakaravan.Application.Validators
                 .MaximumLength(255)
                 .WithMessage("Footer bilgisi en fazla 255 karakter olabilir.");
 
-            RuleFor(x => x.Logo)
+            RuleFor(x => x.LogoFile)
                 .Must(x => ProcessImageHelper.GetFileType(x) != FileType.Unknown)
                 .When(x => x != null)
                 .WithMessage("Geçerli bir resim dosyası seçilmelidir.")
@@ -75,6 +75,17 @@ namespace Perakaravan.Application.Validators
                 .MaximumLength(100)
                 .When(x => x != null)
                 .WithMessage("Logo metni en fazla 100 karakter olabilir.");
+
+            RuleFor(x => x.SmtpUrl)
+                .MaximumLength(100)
+                .When(x => x != null)
+                .WithMessage("Smtp adresi en fazla 100 karakter olabilir.");
+
+            RuleFor(x => x.SmtpDisplayName)
+                .MaximumLength(100)
+                .When(x => x != null)
+                .WithMessage("Eposta görünen adresi en fazla 100 karakter olabilir.");
+
         }
     }
 }

@@ -13,7 +13,10 @@ namespace Perakaravan.Application.Dtos.Request.Statics
         public string Twitter { get; set; }
         public string HomepageTitle { get; set; }
         public string Footer { get; set; }
-        public IFormFile Logo { get; set; }
+        public IFormFile LogoFile { get; set; }
         public string LogoTitle { get; set; }
+        public string SmtpUrl { get; set; }
+        public string SmtpDisplayName { get; set; }
+        public int? SmtpPort { get; set; }
     }
 }

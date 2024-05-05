@@ -17,6 +17,6 @@ namespace Perakaravan.Domain.Entities
         public string LogoTitle { get; set; }
         public string SmtpUrl { get; set; }
         public string SmtpDisplayName { get; set; }
-        public int SmtpPort { get; set; }
+        public int? SmtpPort { get; set; }
     }
 }
