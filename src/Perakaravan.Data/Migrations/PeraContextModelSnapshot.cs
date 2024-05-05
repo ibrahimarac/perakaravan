@@ -110,7 +110,7 @@ namespace Perakaravan.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedTime = new DateTime(2024, 5, 5, 14, 33, 35, 760, DateTimeKind.Unspecified).AddTicks(8490),
+                            CreatedTime = new DateTime(2024, 5, 5, 21, 47, 55, 166, DateTimeKind.Unspecified).AddTicks(4257),
                             CreatedUser = "admin",
                             Email = "6i1RRb8yv2k93LY76uQYXg==",
                             IsDeleted = false,
@@ -123,7 +123,7 @@ namespace Perakaravan.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedTime = new DateTime(2024, 5, 5, 14, 33, 35, 760, DateTimeKind.Unspecified).AddTicks(8778),
+                            CreatedTime = new DateTime(2024, 5, 5, 21, 47, 55, 166, DateTimeKind.Unspecified).AddTicks(4304),
                             CreatedUser = "admin",
                             Email = "YPRqARSJPWq8wMRbcsaVck2Wnq3lgHLvl0z7T+wsoKc=",
                             IsDeleted = false,
@@ -133,6 +133,128 @@ namespace Perakaravan.Data.Migrations
                             Surname = "ARAÇ",
                             Username = "ibrahim"
                         });
+                });
+
+            modelBuilder.Entity("Perakaravan.Domain.Entities.SiteStatic", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Id")
+                        .HasColumnOrder(1);
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("Address")
+                        .HasColumnOrder(4);
+
+                    b.Property<DateTime>("CreatedTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreatedTime")
+                        .HasColumnOrder(32);
+
+                    b.Property<string>("CreatedUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("CreatedUser")
+                        .HasColumnOrder(30);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("Email")
+                        .HasColumnOrder(3);
+
+                    b.Property<string>("Facebook")
+                        .IsRequired()
+                        .HasColumnType("varchar(150)")
+                        .HasColumnName("Facebook")
+                        .HasColumnOrder(7);
+
+                    b.Property<string>("Footer")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("Footer")
+                        .HasColumnOrder(10);
+
+                    b.Property<string>("GoogleMap")
+                        .IsRequired()
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("GoogleMap")
+                        .HasColumnOrder(5);
+
+                    b.Property<string>("HomepageTitle")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("HomepageTitle")
+                        .HasColumnOrder(9);
+
+                    b.Property<string>("Instagram")
+                        .IsRequired()
+                        .HasColumnType("varchar(150)")
+                        .HasColumnName("Instagram")
+                        .HasColumnOrder(6);
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Logo")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Logo")
+                        .HasColumnOrder(11);
+
+                    b.Property<string>("LogoTitle")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("LogoTitle")
+                        .HasColumnOrder(12);
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("varchar(12)")
+                        .HasColumnName("Phone")
+                        .HasColumnOrder(2);
+
+                    b.Property<string>("SmtpDisplayName")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("SmtpDisplayName")
+                        .HasColumnOrder(14);
+
+                    b.Property<int>("SmtpPort")
+                        .HasColumnType("int")
+                        .HasColumnName("SmtpPort")
+                        .HasColumnOrder(15);
+
+                    b.Property<string>("SmtpUrl")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("SmtpUrl")
+                        .HasColumnOrder(13);
+
+                    b.Property<string>("Twitter")
+                        .IsRequired()
+                        .HasColumnType("varchar(150)")
+                        .HasColumnName("Twitter")
+                        .HasColumnOrder(8);
+
+                    b.Property<DateTime?>("UpdatedTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("UpdatedTime")
+                        .HasColumnOrder(33);
+
+                    b.Property<string>("UpdatedUser")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("UpdatedUser")
+                        .HasColumnOrder(31);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SiteStatic", (string)null);
                 });
 
             modelBuilder.Entity("Perakaravan.Domain.Entities.Slider", b =>

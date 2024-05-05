@@ -16,6 +16,7 @@ namespace Perakaravan.Data.Repositories
         private readonly LoggedUser _loggedUser;
         private readonly ILoginUserRepository loginUserRepository;
         private readonly ISliderRepository sliderRepository;
+        private readonly ISiteStaticRepository siteStaticRepository;
 
         public UnitOfWork(PeraContext context, LoggedUser loggedUser)
         {
@@ -23,12 +24,14 @@ namespace Perakaravan.Data.Repositories
             _loggedUser = loggedUser;
 
             loginUserRepository = loginUserRepository ?? new LoginUserRepository(_context);
-            sliderRepository = sliderRepository ?? new SliderRepository(_context);            
+            sliderRepository = sliderRepository ?? new SliderRepository(_context);   
+            siteStaticRepository = siteStaticRepository ?? new SiteStaticRepository(_context);
         }
 
 
         public ILoginUserRepository LoginUserRepository => loginUserRepository;
         public ISliderRepository SliderRepository => sliderRepository;
+        public ISiteStaticRepository SiteStaticRepository => siteStaticRepository;
 
 
         public IDbContextTransaction BeginTransaction()

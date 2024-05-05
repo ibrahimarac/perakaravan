@@ -18,6 +18,7 @@ namespace Perakaravan.Data.Context
 
         public DbSet<LoginUser> LoginUsers { get; set; }
         public DbSet<Slider> Sliders { get; set; }
+        public DbSet<SiteStatic> SiteStatics { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,6 +36,7 @@ namespace Perakaravan.Data.Context
             //Mappings
             modelBuilder.ApplyConfiguration(new LoginUserMapping());
             modelBuilder.ApplyConfiguration(new SliderMapping());
+            modelBuilder.ApplyConfiguration(new SiteStaticMapping());
         }
 
     }
