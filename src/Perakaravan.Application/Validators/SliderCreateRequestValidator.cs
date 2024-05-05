@@ -9,11 +9,9 @@ namespace Perakaravan.Application.Validators
         public SliderCreateRequestValidator()
         {
             RuleFor(x => x.Title)
-                .NotEmpty().WithMessage("Başlık bilgisi.")
                 .MaximumLength(150).WithMessage("Başlık bilgisi en fazla 150 karakter olabilir.");
 
             RuleFor(x => x.SubTitle)
-                .NotEmpty().WithMessage("Alt başlık bilgisi boş olamaz.")
                 .MaximumLength(300).WithMessage("Alt başlık bilgisi en fazla 300 karakter olabilir.");
 
             RuleFor(x => x.ImageFile)
@@ -24,7 +22,6 @@ namespace Perakaravan.Application.Validators
                 .WithMessage("Resim dosyası 3 MB'dan büyük olamaz.");
 
             RuleFor(x => x.RedirectUrl)
-                .NotEmpty().WithMessage("Yönlendirme adresi boş olamaz.")
                 .MaximumLength(200).WithMessage("Yönlendirme adresi en fazla 200 karakter olabilir.");
         }
     }

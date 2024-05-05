@@ -80,24 +80,15 @@ namespace Perakaravan.InfraPack.Utils
 
         public static Image ResizeImage(Image image, int maxWidth, int maxHeight)
         {
-            // Calculate the scaling factor to maintain aspect ratio
             float widthRatio = (float)maxWidth / image.Width;
             float heightRatio = (float)maxHeight / image.Height;
             float resizeRatio = Math.Min(widthRatio, heightRatio);
 
-            // Calculate the new dimensions
             int newWidth = (int)(image.Width * resizeRatio);
             int newHeight = (int)(image.Height * resizeRatio);
 
-            // Resize the image while preserving aspect ratio
             image.Mutate(x => x.Resize(newWidth, newHeight));
 
-            //// Save the resized image
-            //using (FileStream outputStream = File.Create(outputImagePath))
-            //{
-            //    var encoder = new JpegEncoder();
-            //    image.Save(outputStream, encoder);
-            //}
             return image;
         }
 

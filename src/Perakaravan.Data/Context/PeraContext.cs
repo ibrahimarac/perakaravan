@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Perakaravan.Data.Extensions;
 using Perakaravan.Data.Mappings;
 using Perakaravan.Domain.Entities;
 using Perakaravan.InfraPack.Providers.EncryptionProvider.Extensions;
@@ -17,10 +18,17 @@ namespace Perakaravan.Data.Context
 
         public DbSet<LoginUser> LoginUsers { get; set; }
         public DbSet<Slider> Sliders { get; set; }
-        public object ApplicationConstants { get; private set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //QueryFilter
+            foreach (var type in modelBuilder.Model.GetEntityTypes())
+            {
+                var isActive = type.FindProperty("IsDeleted");
+                if (isActive != null && isActive.ClrType == typeof(bool))
+                    modelBuilder.SetSoftDeleteFilter(type.ClrType);
+            }
+
             //Encryption
             modelBuilder.UseEncryption(_encryptionProvider);
 

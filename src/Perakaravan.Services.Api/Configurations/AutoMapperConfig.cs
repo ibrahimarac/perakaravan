@@ -11,7 +11,9 @@ namespace Perakaravan.Services.Api.Configurations
 
             services.AddSingleton(provider =>new MapperConfiguration(cfg =>
                 {
-                    cfg.AddProfile(new DomainToDtoMappingProfiler());
+                    var configuration = provider.GetRequiredService<IConfiguration>();
+
+                    cfg.AddProfile(new DomainToDtoMappingProfiler(configuration));
                     cfg.AddProfile(new DtoToDomainMappingProfiler());
                 }).CreateMapper());
 

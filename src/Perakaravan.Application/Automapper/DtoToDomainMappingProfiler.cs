@@ -9,6 +9,7 @@ namespace Perakaravan.Application.Automapper
         public DtoToDomainMappingProfiler()
         {
             CreateMap<SliderCreateRequestDto, Slider>();
+            CreateMap<SliderUpdateRequestDto, Slider>();
         }
     }
 }

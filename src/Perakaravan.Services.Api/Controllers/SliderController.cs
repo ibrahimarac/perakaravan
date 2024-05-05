@@ -14,10 +14,34 @@ namespace Perakaravan.Services.Api.Controllers
             _sliderService = sliderService;
         }
 
+        [HttpGet("get")]
+        public async Task<IActionResult> GetAll()
+        {
+            return CustomResponse(await _sliderService.GetAllSlider());
+        }
+
+        [HttpGet("get-detail")]
+        public async Task<IActionResult> GetAllDetail()
+        {
+            return CustomResponse(await _sliderService.GetAllSliderDetail());
+        }
+
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromForm] SliderCreateRequestDto sliderModel)
         {
             return CustomResponse(await _sliderService.CreateSlider(sliderModel));
+        }
+
+        [HttpPut("update")]
+        public async Task<IActionResult> Update([FromForm] SliderUpdateRequestDto sliderModel)
+        {
+            return CustomResponse(await _sliderService.UpdateSlider(sliderModel));
+        }
+
+        [HttpPut("delete/{id:int}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            return CustomResponse(await _sliderService.DeleteSlider(id));
         }
     }
 }
