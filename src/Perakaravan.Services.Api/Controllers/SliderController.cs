@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Perakaravan.Application.Dtos.Request.Sliders;
 using Perakaravan.Application.Interfaces;
 
 namespace Perakaravan.Services.Api.Controllers
 {
     [Route("slider")]
+    [Authorize]
     public class SliderController : ApiController
     {
         private readonly ISliderService _sliderService;
