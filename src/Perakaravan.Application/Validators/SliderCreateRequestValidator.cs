@@ -8,11 +8,15 @@ namespace Perakaravan.Application.Validators
     {
         public SliderCreateRequestValidator()
         {
-            RuleFor(x => x.Title)
-                .MaximumLength(150).WithMessage("Başlık bilgisi en fazla 150 karakter olabilir.");
+            RuleFor(x => x.Title)                
+                .MaximumLength(150)
+                .When(x => x != null)
+                .WithMessage("Başlık bilgisi en fazla 150 karakter olabilir.");
 
             RuleFor(x => x.SubTitle)
-                .MaximumLength(300).WithMessage("Alt başlık bilgisi en fazla 300 karakter olabilir.");
+                .MaximumLength(300)
+                .When(x => x != null)
+                .WithMessage("Alt başlık bilgisi en fazla 300 karakter olabilir.");
 
             RuleFor(x => x.ImageFile)
                 .NotNull().WithMessage("Resim dosyası seçilmelidir.")
@@ -22,7 +26,9 @@ namespace Perakaravan.Application.Validators
                 .WithMessage("Resim dosyası 3 MB'dan büyük olamaz.");
 
             RuleFor(x => x.RedirectUrl)
-                .MaximumLength(200).WithMessage("Yönlendirme adresi en fazla 200 karakter olabilir.");
+                .MaximumLength(200)
+                .When(x => x != null)
+                .WithMessage("Yönlendirme adresi en fazla 200 karakter olabilir.");
         }
     }
 }
