@@ -16,6 +16,7 @@ namespace Perakaravan.CrossCutting.IoC
         {
             //Application
             services.AddScoped<ILoginUserService, LoginUserService>();
+            services.AddScoped<ISliderService, SliderService>();
 
             //InfraPack
             services.AddSingleton<IEncryptionProvider, EncryptionProvider>(provider =>
@@ -27,6 +28,7 @@ namespace Perakaravan.CrossCutting.IoC
             //Data
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ILoginUserRepository, LoginUserRepository>();
+            services.AddScoped<ISliderRepository, SliderRepository>();
         }
     }
 }

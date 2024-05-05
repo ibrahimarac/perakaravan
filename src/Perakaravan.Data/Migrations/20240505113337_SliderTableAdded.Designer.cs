@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Perakaravan.Data.Context;
 
@@ -11,9 +12,11 @@ using Perakaravan.Data.Context;
 namespace Perakaravan.Data.Migrations
 {
     [DbContext(typeof(PeraContext))]
-    partial class PeraContextModelSnapshot : ModelSnapshot
+    [Migration("20240505113337_SliderTableAdded")]
+    partial class SliderTableAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

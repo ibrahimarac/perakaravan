@@ -15,18 +15,20 @@ namespace Perakaravan.Data.Repositories
 
         private readonly LoggedUser _loggedUser;
         private readonly ILoginUserRepository loginUserRepository;
+        private readonly ISliderRepository sliderRepository;
 
         public UnitOfWork(PeraContext context, LoggedUser loggedUser)
         {
             _context = context;
+            _loggedUser = loggedUser;
 
             loginUserRepository = loginUserRepository ?? new LoginUserRepository(_context);
-            _loggedUser = loggedUser;
+            sliderRepository = sliderRepository ?? new SliderRepository(_context);            
         }
 
 
         public ILoginUserRepository LoginUserRepository => loginUserRepository;
-
+        public ISliderRepository SliderRepository => sliderRepository;
 
 
         public IDbContextTransaction BeginTransaction()

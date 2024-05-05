@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Perakaravan.Application.Dtos.Request.Sliders;
+using Perakaravan.Domain.Entities;
 
 namespace Perakaravan.Application.Automapper
 {
@@ -6,7 +8,7 @@ namespace Perakaravan.Application.Automapper
     {
         public DtoToDomainMappingProfiler()
         {
-            
+            CreateMap<SliderCreateRequestDto, Slider>();
         }
     }
 }

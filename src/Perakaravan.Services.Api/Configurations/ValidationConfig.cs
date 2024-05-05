@@ -10,8 +10,6 @@ namespace Perakaravan.Services.Api.Configurations
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddValidatorsFromAssemblyContaining(typeof(LoginRequestValidator));
-            services.AddScoped<IValidatorFactory, ServiceProviderValidatorFactory>();
-
         }
     }
 }

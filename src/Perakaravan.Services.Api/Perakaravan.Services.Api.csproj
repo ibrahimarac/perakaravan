@@ -38,4 +38,8 @@
     <ProjectReference Include="..\Perakaravan.Data\Perakaravan.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>

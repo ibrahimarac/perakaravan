@@ -16,6 +16,7 @@ namespace Perakaravan.Data.Context
         }
 
         public DbSet<LoginUser> LoginUsers { get; set; }
+        public DbSet<Slider> Sliders { get; set; }
         public object ApplicationConstants { get; private set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -23,7 +24,9 @@ namespace Perakaravan.Data.Context
             //Encryption
             modelBuilder.UseEncryption(_encryptionProvider);
 
+            //Mappings
             modelBuilder.ApplyConfiguration(new LoginUserMapping());
+            modelBuilder.ApplyConfiguration(new SliderMapping());
         }
 
     }
